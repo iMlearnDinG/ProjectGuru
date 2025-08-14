@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Personal Trainer Gold Standard DevOps Plan (Cloudflare-Native Architecture)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-glow: #0a84ff;
+            --secondary-glow: #00a6ff;
+            --background-start: #1c1c1e;
+            --background-end: #2c2c2e;
+            --card-background: #3a3a3c;
+            --text-color: #f5f5f7;
+            --subtle-text-color: #8e8e93;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.2);
+            --gradient-start: #64d2ff;
+            --gradient-end: #0071e3;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, var(--background-start), var(--background-end));
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .section {
+            background: var(--card-background);
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 24px;
+            box-shadow: 0 16px 64px var(--shadow-color);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 24px 80px var(--shadow-color);
+        }
+        .section h2 {
+            font-size: 2.8em;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+        .section h2 svg {
+            margin-right: 15px;
+            width: 40px;
+            height: 40px;
+            stroke: var(--primary-glow);
+        }
+        .subsection h3 {
+            color: var(--gradient-start);
+            font-size: 2em;
+            font-weight: 700;
+            margin-top: 30px;
+        }
+        .sub-subsection h4 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-top: 25px;
+            border-left: 3px solid var(--primary-glow);
+            padding-left: 15px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .header h1 {
+            font-size: 4em;
+            font-weight: 800;
+            color: var(--text-color);
+        }
+        .header p {
+            color: var(--subtle-text-color);
+            font-size: 1.4em;
+            max-width: 800px;
+            margin: 10px auto;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            margin-bottom: 15px;
+            padding-left: 35px;
+            position: relative;
+        }
+        li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-glow);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .code-block {
+            background-color: #222;
+            color: #d4d4d4;
+            padding: 25px;
+            border-radius: 16px;
+            overflow-x: auto;
+            font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+            font-size: 0.95em;
+            margin-top: 20px;
+            border: 1px solid var(--border-color);
+        }
+        .flow-diagram ol > li::before {
+            content: counter(list-item);
+            position: absolute;
+            left: -15px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: inline-grid;
+            place-items: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            line-height: 1;
+        }
+        .flow-diagram ol {
+            counter-reset: list-item;
+            list-style: none;
+        }
+        .flow-diagram ol > li {
+            counter-increment: list-item;
+            margin-bottom: 25px;
+            padding-left: 40px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            text-align: left;
+        }
+        th {
+            background-color: var(--secondary-color);
+            color: white;
+            font-weight: 600;
+        }
+        tr:nth-of-type(odd) {
+            background-color: rgba(255,255,255,0.02);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI Personal Trainer Gold Standard DevOps Plan</h1>
+            <p><strong>Architecture:</strong> Cloudflare-Native Full Stack with Integrated DevOps Best Practices | <strong>Last Updated:</strong> Thursday, August 14, 2025</p>
+            <p>This enhanced plan targets mobile platforms (iPhone/Android), initially focusing on iOS with LiDAR for precise depth using ARKit and MediaPipe, followed by Android ARCore support. It centers on React Native development, expands to 33 MediaPipe BlazePose landmarks, and incorporates edge AI for local inference, user data anonymization, competitor benchmarking (e.g., Kaia Health, Exer), tiered monetization ($0 free, $14.99 premium), Apple Health/Google Fit integration, offline processing, app store/influencer marketing, and iOS beta testing with 500 users.</p>
+        </div>
+
+        <div class="section">
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h12M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-12a2.25 2.25 0 01-2.25-2.25V3M16.5 16.5h-9" /></svg>
+                Part 1: Vision, Strategy & Agile Framework
+            </h2>
+            <div class="subsection">
+                <h3>1.1. Project Vision & Objectives</h3>
+                <p>To create a market-leading personal training mobile app leveraging real-time pose estimation with edge AI for on-device inference, providing accessible, accurate, and personalized biomechanical feedback. Targets 10,000 active users in the first year via a scalable, secure, serverless architecture. Draws from Stanford's Mobilize/Restore tutorials, Nature's single-camera analysis, and 2025 advancements (BioPose, OpenCapBench), focusing on metrics like knee flexion and gait cycles. Prioritizes iOS LiDAR via ARKit, then Android ARCore.</p>
+                <h4>1.1.1 Key Milestones and KPIs</h4>
+                <ul>
+                    <li>User Acquisition: Target 10K MAU via viral sharing, app store features, and influencer partnerships.</li>
+                    <li>Accuracy Metrics: Achieve 95% pose detection accuracy with BlazePose, validated against OpenCapBench; enhance with LiDAR/edge AI.</li>
+                    <li>Scalability Goals: Handle 1M concurrent sessions with <50ms latency using edge computing.</li>
+                    <li>Monetization: Freemium model with $0 basic, $4.99/month premium, $14.99/month pro (custom plans/coaching).</li>
+                    <li>Clinical Alignment: Incorporate gait cycle detection for rehab, per Restore Center goals.</li>
+                </ul>
+                <h4>1.1.2 Risk Assessment</h4>
+                <p>Risks include data privacy (mitigated by encryption/anonymization), AI errors (addressed via Grok validation), and device compatibility (LiDAR on Pro models). Beta testing mitigates real-user issues.</p>
+                <h3>1.2. The Cloudflare-Native Advantage</h3>
+                <p>Adopts a <strong>Cloudflare-first</strong> strategy for a unified, secure, high-performance stack. Leverages global edge network to reduce latency by 50-70% vs. AWS, integrating Grok API and MediaPipe/OpenPose with edge AI for on-device processing.</p>
+                <h4>1.2.1 Integration with External Ecosystems</h4>
+                <p>Integrates GitHub for CI/CD, Azure for monitoring, Kubernetes for scaling, and Stanford mobile-gaitlab datasets. Syncs with Apple Health/Google Fit.</p>
+                <h4>1.2.2 Pros/Cons</h4>
+                <table>
+                    <tr><th>Pros</th><th>Cons</th></tr>
+                    <tr><td>Zero-cost DDoS; edge caching.</td><td>Cloudflare lock-in; edge AI resource demands.</td></tr>
+                </table>
+                <h3>1.3. Agile Framework: Scrum</h3>
+                <p>Adopts <strong>Scrum</strong> with two-week sprints, using Agile principles. Managed in <strong>Azure Boards</strong> with Cloudflare webhooks, version control via <strong>Git/GitHub</strong> with GitHub Flow, aligning with DevOps for rapid iteration.</p>
+                <h4>1.3.1 Scrum Roles and Ceremonies</h4>
+                <ul>
+                    <li>Product Owner: Prioritizes features (e.g., gait analysis).</li>
+                    <li>Scrum Master: Manages stand-ups and retrospectives.</li>
+                    <li>Ceremonies: Planning, reviews, backlog refinement.</li>
+                </ul>
+                <h4>1.3.2 Integration with DevOps</h4>
+                <p>Azure Boards links to GitHub Actions for automated updates, ensuring traceability.</p>
+                <h4>1.3.3 Work Item Process</h4>
+                <p>Custom Scrum process: Epics for features (e.g., pose estimation), User Stories for increments (e.g., real-time feedback).</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>
+                Part 2: Detailed Technology Stack & Implementation
+            </h2>
+            <div class="subsection">
+                <h3>2.1. Frontend: React Native & Cloudflare Pages</h3>
+                <h4>Introduction to the Technology</h4>
+                <p>A <strong>React Native</strong> mobile app with <strong>Cloudflare Pages</strong> web fallback handles UI for video capture and feedback on iOS/Android. Prioritizes iOS ARKit/LiDAR, later Android ARCore. Stack Position: Client-side layer.</p>
+                <h4>2.1.1 Overview and Sub-Technologies</h4>
+                <ul>
+                    <li>React Native Hooks: Manages state (e.g., video streams).</li>
+                    <li>ARKit (iOS): Fuses LiDAR depth with MediaPipe.</li>
+                    <li>ARCore (Android): Future depth integration.</li>
+                    <li>WebRTC: Enables camera access for MediaPipe.</li>
+                </ul>
+                <h4>2.1.2 Connections to Other Tech</h4>
+                <p>Links with MediaPipe for pose data, sends to Cloudflare Workers, fetches from D1, syncs with Apple Health/Google Fit.</p>
+                <h4>2.1.3 Pros/Cons and Best Practices</h4>
+                <table>
+                    <tr><th>Pros</th><th>Cons</th></tr>
+                    <tr><td>Cross-platform; native feel.</td><td>LiDAR on Pro models only.</td></tr>
+                </table>
+                <p>Best Practice: Use Expo for AR; 2D fallback on non-LiDAR devices.</p>
+                <h4>2.1.4 Code Example: Video Capture Component</h4>
+                <div class="code-block"><pre><code>
+import React, { useRef, useEffect } from 'react';
+import { Pose } from '@mediapipe/pose';
+
+const VideoCapture = () => {
+  const videoRef = useRef(null);
+  useEffect(() => {
+    navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+      videoRef.current.srcObject = stream;
+    });
+    const pose = new Pose({ locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}` });
+    // Setup pose estimation...
+  }, []);
+  return <video ref={videoRef} autoPlay />;
+};
+                </code></pre></div>
+            </div>
+            <div class="subsection">
+                <h3>2.2. Pose Estimation: MediaPipe (Client-Side)</h3>
+                <h4>Introduction to the Technology</h4>
+                <p><strong>MediaPipe (TensorFlow.js)</strong> with <strong>BlazePose</strong> outputs 33 3D landmarks for pose estimation, enhanced by iOS LiDAR. Supports biomechanics analysis (e.g., knee angles) with edge AI. Stack Position: Client-side ML layer.</p>
+                <h4>2.2.1 Overview and Sub-Technologies</h4>
+                <ul>
+                    <li>BlazePose: Lightweight, mobile-friendly landmark detection.</li>
+                    <li>TensorFlow.js: GPU-accelerated inference.</li>
+                    <li>Holistic Pipeline: Adds face/hand tracking.</li>
+                    <li>Control Utilities: Smooths landmark jitter.</li>
+                </ul>
+                <h4>2.2.2 Connections to Other Tech</h4>
+                <p>Feeds data to preprocessing, sends to Workers for Grok, integrates with React Native overlays.</p>
+                <h4>2.2.3 Pros/Cons and Best Practices</h4>
+                <table>
+                    <tr><th>Pros</th><th>Cons</th></tr>
+                    <tr><td>Privacy-focused; low latency.</td><td>Device-dependent (CPU fallback).</td></tr>
+                </table>
+                <p>Best Practice: Filter with >0.5 visibility; fuse LiDAR on iOS.</p>
+                <h4>2.2.4 Example: Raw MediaPipe JSON Output (Single Frame)</h4>
+                <div class="code-block"><pre><code>
+{
+  "poseLandmarks": [
+    { "index": 0, "name": "nose", "x": 0.5, "y": 0.2, "z": -0.1, "visibility": 0.99, "presence": 0.99 },
+    { "index": 1, "name": "left eye (inner)", "x": 0.48, "y": 0.18, "z": -0.05, "visibility": 0.98, "presence": 0.98 },
+    { "index": 2, "name": "left eye", "x": 0.47, "y": 0.17, "z": -0.06, "visibility": 0.98, "presence": 0.98 },
+    { "index": 3, "name": "left eye (outer)", "x": 0.46, "y": 0.16, "z": -0.07, "visibility": 0.98, "presence": 0.98 },
+    { "index": 4, "name": "right eye (inner)", "x": 0.52, "y": 0.18, "z": -0.05, "visibility": 0.98, "presence": 0.98 },
+    { "index": 5, "name": "right eye", "x": 0.53, "y": 0.17, "z": -0.06, "visibility": 0.98, "presence": 0.98 },
+    { "index": 6, "name": "right eye (outer)", "x": 0.54, "y": 0.16, "z": -0.07, "visibility": 0.98, "presence": 0.98 },
+    { "index": 7, "name": "left ear", "x": 0.45, "y": 0.15, "z": -0.1, "visibility": 0.97, "presence": 0.97 },
+    { "index": 8, "name": "right ear", "x": 0.55, "y": 0.15, "z": -0.1, "visibility": 0.97, "presence": 0.97 },
+    { "index": 9, "name": "mouth (left)", "x": 0.48, "y": 0.22, "z": -0.08, "visibility": 0.96, "presence": 0.96 },
+    { "index": 10, "name": "mouth (right)", "x": 0.52, "y": 0.22, "z": -0.08, "visibility": 0.96, "presence": 0.96 },
+    { "index": 11, "name": "left shoulder", "x": 0.4, "y": 0.3, "z": -0.2, "visibility": 0.99, "presence": 0.99 },
+    { "index": 12, "name": "right shoulder", "x": 0.6, "y": 0.3, "z": -0.2, "visibility": 0.99, "presence": 0.99 },
+    { "index": 13, "name": "left elbow", "x": 0.35, "y": 0.45, "z": -0.3, "visibility": 0.98, "presence": 0.98 },
+    { "index": 14, "name": "right elbow", "x": 0.65, "y": 0.45, "z": -0.3, "visibility": 0.98, "presence": 0.98 },
+    { "index": 15, "name": "left wrist", "x": 0.3, "y": 0.6, "z": -0.4, "visibility": 0.97, "presence": 0.97 },
+    { "index": 16, "name": "right wrist", "x": 0.7, "y": 0.6, "z": -0.4, "visibility": 0.97, "presence": 0.97 },
+    { "index": 17, "name": "left pinky", "x": 0.28, "y": 0.65, "z": -0.35, "visibility": 0.95, "presence": 0.95 },
+    { "index": 18, "name": "right pinky", "x": 0.72, "y": 0.65, "z": -0.35, "visibility": 0.95, "presence": 0.95 },
+    { "index": 19, "name": "left index", "x": 0.32, "y": 0.65, "z": -0.35, "visibility": 0.95, "presence": 0.95 },
+    { "index": 20, "name": "right index", "x": 0.68, "y": 0.65, "z": -0.35, "visibility": 0.95, "presence": 0.95 },
+    { "index": 21, "name": "left thumb", "x": 0.33, "y": 0.62, "z": -0.3, "visibility": 0.96, "presence": 0.96 },
+    { "index": 22, "name": "right thumb", "x": 0.67, "y": 0.62, "z": -0.3, "visibility": 0.96, "presence": 0.96 },
+    { "index": 23, "name": "left hip", "x": 0.4, "y": 0.7, "z": -0.5, "visibility": 0.99, "presence": 0.99 },
+    { "index": 24, "name": "right hip", "x": 0.6, "y": 0.7, "z": -0.5, "visibility": 0.99, "presence": 0.99 },
+    { "index": 25, "name": "left knee", "x": 0.4, "y": 0.9, "z": -0.6, "visibility": 0.98, "presence": 0.98 },
+    { "index": 26, "name": "right knee", "x": 0.6, "y": 0.9, "z": -0.6, "visibility": 0.98, "presence": 0.98 },
+    { "index": 27, "name": "left ankle", "x": 0.4, "y": 1.0, "z": -0.7, "visibility": 0.97, "presence": 0.97 },
+    { "index": 28, "name": "right ankle", "x": 0.6, "y": 1.0, "z": -0.7, "visibility": 0.97, "presence": 0.97 },
+    { "index": 29, "name": "left heel", "x": 0.38, "y": 1.05, "z": -0.65, "visibility": 0.96, "presence": 0.96 },
+    { "index": 30, "name": "right heel", "x": 0.62, "y": 1.05, "z": -0.65, "visibility": 0.96, "presence": 0.96 },
+    { "index": 31, "name": "left foot index", "x": 0.35, "y": 1.1, "z": -0.75, "visibility": 0.95, "presence": 0.95 },
+    { "index": 32, "name": "right foot index", "x": 0.65, "y": 1.1, "z": -0.75, "visibility": 0.95, "presence": 0.95 }
+  ]
+}
+                </code></pre></div>
+                <h4>2.2.5 Advanced Guidance from Tutorials</h4>
+                <p>From Stanford notebooks: Apply Gaussian filtering for smoothing, use vector math (e.g., arctan) for angles, extract gait cycles.</p>
+                <h4>2.2.6 Integration from Quantitative Mechanics Papers</h4>
+                <p>From movement reviews: Use path descriptors (sinuosity, turning angles). From markerless surveys: Hybrid with IMU for dynamic accuracy.</p>
+            </div>
+            <div class="subsection">
+                <h3>2.3. Data Preprocessing (Client-Side Python Libraries)</h3>
+                <h4>Introduction to the Technology</h4>
+                <p>Processes MediaPipe time-series in-app with Python (Pyodide or native). Uses Nature, Stanford, and mobile-gaitlab methods for interpolation, filtering, normalization. Stack Position: Client-side data layer.</p>
+                <h4>2.3.1 Overview and Sub-Technologies</h4>
+                <ul>
+                    <li>NumPy: Vector operations and norms.</li>
+                    <li>SciPy: Interpolation (interp1d) and filtering (gaussian_filter1d, sigma=3-5).</li>
+                    <li>Pyodide: WASM for JS integration.</li>
+                    <li>Pandas: Optional for complex analysis.</li>
+                </ul>
+                <h4>2.3.2 Connections to Other Tech</h4>
+                <p>Receives JSON from MediaPipe, sends to Workers, connects to Grok, aligns with OpenPose parsing.</p>
+                <h4>2.3.3 Pros/Cons and Best Practices</h4>
+                <table>
+                    <tr><th>Pros</th><th>Cons</th></tr>
+                    <tr><td>Local processing; privacy-aligned.</td><td>WASM overhead (mitigated by optimization).</td></tr>
+                </table>
+                <p>Best Practice: Normalize to [0,1]; replace low-confidence (<0.0001) with NaN.</p>
+                <h4>2.3.4 Code Example: Preprocessing Pipeline (Enhanced from Tutorial)</h4>
+                <div class="code-block"><pre><code>
+import numpy as np
+from scipy.interpolate import interp1d
+from scipy.ndimage import gaussian_filter1d
+
+def preprocess_landmarks(landmarks):
+    landmarks[landmarks < 0.0001] = np.NaN
+    visible = np.isfinite(landmarks)
+    f = interp1d(np.arange(len(landmarks))[visible], landmarks[visible], kind='linear', fill_value='extrapolate')
+    filled = f(np.arange(len(landmarks)))
+    smoothed = gaussian_filter1d(filled, sigma=1)
+    femur_length = np.linalg.norm(smoothed[23] - smoothed[25])
+    return smoothed / femur_length
+                </code></pre></div>
+                <h4>2.3.5 Tutorial Enhancements</h4>
+                <p>Diagnostic plots for discontinuities; linear interpolation; Gaussian filtering (sd=1-5); mid-hip debiasing.</p>
+                <h4>2.3.6 Integration from Quantitative Mechanics Papers</h4>
+                <p>From gait DNN: Bias correction for angles. From squat kinematics: Segment normalization. From review: Similarity indices (Frechet distance).</p>
+            </div>
+            <div class="subsection">
+                <h3>2.4. Serverless Backend: Cloudflare Workers</h3>
+                <h4>Introduction to the Technology</h4>
+                <p><strong>Cloudflare Workers</strong> manage backend logic as edge functions, acting as an API gateway for Grok and D1. Uses Wrangler CLI. Stack Position: Edge compute layer.</p>
+                <h4>2.4.1 Overview and Sub-Technologies</h4>
+                <ul>
+                    <li>Workers KV: Caches session data.</li>
+                    <li>Streams API: Handles data streams.</li>
+                    <li>Durable Objects: Supports stateful sessions.</li>
+                    <li>Wrangler: CLI for testing/deployment.</li>
+                </ul>
+                <h4>2.4.2 Connections to Other Tech</h4>
+                <p>Receives from React Native, calls Grok, queries D1/R2, integrates with Zero Trust.</p>
+                <h4>2.4.3 Pros/Cons and Best Practices</h4>
+                <table>
+                    <tr><th>Pros</th><th>Cons</th></tr>
+                    <tr><td>Global scaling; auto-adjusting.</td><td>1MB limit (modular solution).</td></tr>
+                </table>
+                <p>Best Practice: Use async/await for I/O.</p>
+            </div>
+            <div class="subsection">
+                <h3>2.5. AI Analysis: Grok API</h3>
+                <h4>Introduction to the Technology</h4>
+                <p><strong>Grok API</strong> (xAI) offers AI for biomechanical feedback with reasoning. Model: grok-4-latest. Stack Position: Inference layer.</p>
+                <h4>2.5.1 Overview and Sub-Technologies</h4>
+                <ul>
+                    <li>Reasoning Features: Complex analysis (e.g., squat critique).</li>
+                    <li>Structured Outputs: JSON feedback schemas.</li>
+                    <li>Voice Mode: Audio via apps.</li>
+                    <li>API SDK: Node.js integration.</li>
+                </ul>
+                <h4>2.5.2 Connections to Other Tech</h4>
+                <p>Receives from Workers, stores in D1, renders in React Native.</p>
+                <h4>2.5.3 Pros/Cons and Best Practices</h4>
+                <table>
+                    <tr><th>Pros</th><th>Cons</th></tr>
+                    <tr><td>Advanced reasoning; truth-seeking.</td><td>Costs (see x.ai/api).</td></tr>
+                </table>
+                <p>Best Practice: Use biomechanics prompts.</p>
+                <h4>2.5.4 Example: Grok API Call from Cloudflare Worker</h4>
+                <div class="code-block"><pre><code>
+const response = await fetch('https://api.x.ai/v1/chat/completions', {
+  method: 'POST',
+  headers: { 'Authorization': `Bearer ${env.GROK_API_KEY}`, 'Content-Type': 'application/json' },
+  body: JSON.stringify({ model: 'grok-4-latest', response_format: { type: "json_object", schema: biomechanicsSchema }, messages: [{ role: "system", content: "Biomechanics expert..." }, { role: "user", content: `Analyze: ${JSON.stringify(preprocessedData)}` }] })
+});
+                </code></pre></div>
+                <h4>2.5.5 Enhancements from Paper</h4>
+                <p>Predicts gait metrics (speed, cadence, GDI) with 0.73-0.83 correlation.</p>
+                <h4>2.5.6 Integration from Quantitative Mechanics Papers</h4>
+                <p>From DNN: GDI/knee predictions. From Transformer: Spatial-temporal features. From review: Group dynamics.</p>
+            </div>
+            <div class="subsection">
+                <h3>2.6. Database: Cloudflare D1</h3>
+                <h4>Introduction to the Technology</h4>
+                <p><strong>Cloudflare D1</strong> is a serverless SQL database for sessions/metrics. Edge-native for low latency. Stack Position: Data layer.</p>
+                <h4>2.6.1 Overview and Sub-Technologies</h4>
+                <ul>
+                    <li>SQLite Backend: ACID transactions.</li>
+                    <li>Time-series Extensions: Landmark history.</li>
+                    <li>Bindings: SQL in JS.</li>
+                    <li>Backup to R2: Snapshots.</li>
+                </ul>
+                <h4>2.6.2 Connections to Other Tech</h4>
+                <p>Stores Grok outputs, queried by React Native, backs up to R2.</p>
+                <h4>2.6.3 Pros/Cons and Best Practices</h4>
+                <table>
+                    <tr><th>Pros</th><th>Cons</th></tr>
+                    <tr><td>Serverless; edge replication.</td><td>1GB limit (shard if needed).</td></tr>
+                </table>
+                <p>Best Practice: Index on userId.</p>
+                <h4>2.6.4 Example: D1 Table Schema for User Sessions</h4>
+                <div class="code-block"><pre><code>
+CREATE TABLE UserSessions (sessionId TEXT PRIMARY KEY, userId TEXT NOT NULL, exerciseType TEXT NOT NULL, sessionDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, reps INTEGER, avgFormScore INTEGER, feedbackSummary TEXT, gaitCycles JSON, INDEX idx_user (userId));
+                </code></pre></div>
+            </div>
+            <div class="subsection">
+                <h3>2.7. Storage: Cloudflare R2</h3>
+                <h4>Introduction to the Technology</h4>
+                <p><strong>Cloudflare R2</strong> offers S3-compatible storage for videos, models, logs. Zero egress fees. Stack Position: Archival layer.</p>
+                <h4>2.7.1 Overview: Role in Project</h4>
+                <p>Stores videos, weights, JSONs for analysis.</p>
+                <h4>2.7.2 Sub-Technologies and Features</h4>
+                <ul>
+                    <li>Object Lifecycle: 30-day video expiry.</li>
+                    <li>Presigned URLs: Secure access.</li>
+                    <li>Event Notifications: Async triggers.</li>
+                    <li>Encryption: AES-256.</li>
+                </ul>
+                <h4>2.7.3 Connections to Other Tech</h4>
+                <p>Integrates with Workers, backs up D1, serves models.</p>
+                <h4>2.7.4 Pros/Cons and Best Practices</h4>
+                <table>
+                    <tr><th>Pros</th><th>Cons</th></tr>
+                    <tr><td>No egress; global reach.</td><td>Eventually consistent.</td></tr>
+                </table>
+                <p>Best Practice: Use multipart for large uploads.</p>
+                <h4>2.7.5 Integration Categories</h4>
+                <ul>
+                    <li>Video Archival: Stores videos.</li>
+                    <li>Model Hosting: Serves weights.</li>
+                    <li>Log Storage: Analytics logs.</li>
+                    <li>Backup: D1 snapshots.</li>
+                    <li>CDN: Caches assets.</li>
+                    <li>Dataset: Hosts Stanford data.</li>
+                </ul>
+            </div>
+            <div class="subsection">
+                <h3>2.8. Authentication & Security: Cloudflare Zero Trust</h3>
+                <h4>Introduction to the Technology</h4>
+                <p>Zero Trust by Cloudflare verifies every request. Stack Position: Security layer.</p>
+                <h4>2.8.1 Overview and Sub-Technologies</h4>
+                <ul>
+                    <li>Cloudflare Access: SSO auth.</li>
+                    <li>WAF: Blocks malicious payloads.</li>
+                    <li>DDoS Mitigation: Rate limiting.</li>
+                    <li>Gateway: Device checks.</li>
+                </ul>
+                <h4>2.8.2 Connections to Other Tech</h4>
+                <p>Secures Workers, integrates with D1, logs to R2.</p>
+                <h4>2.8.3 Pros/Cons and Best Practices</h4>
+                <table>
+                    <tr><th>Pros</th><th>Cons</th></tr>
+                    <tr><td>Built-in; scales.</td><td>Complex setup.</td></tr>
+                </table>
+                <p>Best Practice: Enforce MFA.</p>
+            </div>
+            <div class="subsection">
+                <h3>2.9. Orchestration: Kubernetes (Optional Hybrid with Azure AKS)</h3>
+                <h4>Introduction to the Technology</h4>
+                <p><strong>Kubernetes</strong> via AKS for scaling beyond serverless. Stack Position: Orchestration layer.</p>
+                <h4>2.9.1 Overview and Sub-Technologies</h4>
+                <ul>
+                    <li>Pods/Replicas: Scales containers.</li>
+                    <li>Helm Charts: Deploys manifests.</li>
+                    <li>Ingress: Cloudflare routing.</li>
+                    <li>AKS: Cost-optimized compute.</li>
+                </ul>
+                <h4>2.9.2 Connections to Other Tech</h4>
+                <p>Hosts React Native, connects to R2/D1.</p>
+                <h4>2.9.3 Pros/Cons and Best Practices</h4>
+                <table>
+                    <tr><th>Pros</th><th>Cons</th></tr>
+                    <tr><td>Auto-scaling; resilient.</td><td>Overkill for serverless.</td></tr>
+                </table>
+                <p>Best Practice: Use Horizontal Pod Autoscaler.</p>
+            </div>
+            <div class="subsection">
+                <h3>2.10. Alternative Pose Estimation: OpenPose (Server-Side Fallback)</h3>
+                <h4>Introduction to the Technology</h4>
+                <p><strong>OpenPose</strong> (CMU) as a fallback for multi-person accuracy. Processes via Workers. Stack Position: Backend ML layer.</p>
+                <h4>2.10.1 Overview and Sub-Technologies</h4>
+                <ul>
+                    <li>COCO Model: 18/25 keypoints.</li>
+                    <li>Caffe Backend: GPU inference.</li>
+                    <li>Multi-Person: Background handling.</li>
+                    <li>JSON Output: Keypoints with confidence.</li>
+                </ul>
+                <h4>2.10.2 Connections to Other Tech</h4>
+                <p>Uploads to R2, processes in Workers, feeds to Grok.</p>
+                <h4>2.10.3 Pros/Cons and Best Practices</h4>
+                <table>
+                    <tr><th>Pros</th><th>Cons</th></tr>
+                    <tr><td>High accuracy; multi-view.</td><td>Heavy compute; licensed.</td></tr>
+                </table>
+                <p>Best Practice: Docker in AKS for videos.</p>
+                <h4>2.10.4 Code Example: JSON to Time-Series</h4>
+                <div class="code-block"><pre><code>
+import json
+import numpy as np
+
+def convert_json2csv(json_directory):
+    nframes = len(os.listdir(json_directory))
+    res = np.zeros((nframes,75))
+    res[:] = np.nan
+    for frame in range(nframes):
+        with open(f'{json_directory}input_{str(frame).zfill(12)}_keypoints.json') as f:
+            data = json.load(f)
+            for person in data['people']:
+                res[frame] = person['pose_keypoints_2d']
+                break
+    return res
+                </code></pre></div>
+                <h4>2.10.5 Comparison to MediaPipe</h4>
+                <table>
+                    <tr><th>Aspect</th><th>MediaPipe</th><th>OpenPose</th></tr>
+                    <tr><td>Use Case</td><td>Client, real-time</td><td>Server, multi-person</td></tr>
+                    <tr><td>Keypoints</td><td>33 (3D)</td><td>25 (2D)</td></tr>
+                    <tr><td>Accuracy</td><td>~0.51</td><td>0.83 (CNN)</td></tr>
+                </table>
+            </div>
+            <div class="subsection">
+                <h3>2.11. Latest Advancements Integration (2025)</h3>
+                <h4>Introduction to the Technology</h4>
+                <p>Integrates 2025 models (BioPose, OpenCapBench, diffusion) for 3D accuracy and prosthetics. Stack Position: Future upgrades.</p>
+                <h4>2.11.1 Key Models</h4>
+                <ul>
+                    <li>BioPose: 3D pose with constraints.</li>
+                    <li>OpenCapBench: Validation benchmark.</li>
+                    <li>Synthpose: Dense keypoints.</li>
+                    <li>Diffusion: Zero-shot prosthetics.</li>
+                </ul>
+                <h4>2.11.2 Implementation Strategy</h4>
+                <p>Test with mobile-gaitlab, deploy as Workers modules.</p>
+                <h4>2.11.3 Integration from Quantitative Mechanics Papers</h4>
+                <p>From Transformer: RGB gait (GDI+). From squat VR: Vive trackers. From markerless: IMU/depth hybrids.</p>
+            </div>
+            <div class="subsection">
+                <h3>2.12. Edge AI for On-Device Inference</h3>
+                <h4>Introduction to the Technology</h4>
+                <p>Implements edge AI with TensorFlow Lite for on-device pose estimation, reducing latency to <20ms. Stack Position: Client-side enhancement.</p>
+                <h4>2.12.1 Overview and Sub-Technologies</h4>
+                <ul>
+                    <li>TensorFlow Lite: Lightweight ML on-device.</li>
+                    <li>MediaPipe Tasks: Optimized pose detection.</li>
+                    <li>ARKit Integration: LiDAR depth fusion.</li>
+                    <li>Offline Cache: Local model storage.</li>
+                </ul>
+                <h4>2.12.2 Connections to Other Tech</h4>
+                <p>Processes locally, syncs with Workers for updates, integrates with React Native UI.</p>
+                <h4>2.12.3 Pros/Cons and Best Practices</h4>
+                <table>
+                    <tr><th>Pros</th><th>Cons</th></tr>
+                    <tr><td>Low latency; offline capable.</td><td>Device resource use.</td></tr>
+                </table>
+                <p>Best Practice: Optimize models for iOS, monitor battery impact.</p>
+            </div>
+            <div class="subsection">
+                <h3>2.13. Accessories Integration</h3>
+                <h4>Introduction to the Technology</h4>
+                <p>Integrates Apple Watch/AirPods for HR/voice cues, using HealthKit (iOS) and Google Fit (Android). Stack Position: Client-side enhancement.</p>
+                <h4>2.13.1 Overview and Sub-Technologies</h4>
+                <ul>
+                    <li>HealthKit: iOS HR and activity data.</li>
+                    <li>Google Fit: Android HR sync.</li>
+                    <li>AirPods: Voice feedback via SiriKit.</li>
+                    <li>WatchOS: Real-time HR monitoring.</li>
+                </ul>
+                <h4>2.13.2 Connections to Other Tech</h4>
+                <p>Feeds HR to React Native, enhances Grok feedback, logs to D1.</p>
+                <h4>2.13.3 Pros/Cons and Best Practices</h4>
+                <table>
+                    <tr><th>Pros</th><th>Cons</th></tr>
+                    <tr><td>Enhanced user experience.</td><td>Device dependency.</td></tr>
+                </table>
+                <p>Best Practice: Ensure seamless API integration, handle disconnects.</p>
+            </div>
+            <div class="subsection">
+                <h3>2.14. Enhanced Local Models</h3>
+                <h4>Introduction to the Technology</h4>
+                <p>Enhances local models with federated learning, aggregating data from physio experts (e.g., Stanford) and pro golfers (e.g., PGA). Stack Position: Client-side ML upgrade.</p>
+                <h4>2.14.1 Overview and Sub-Technologies</h4>
+                <ul>
+                    <li>Federated Learning: Decentralized training.</li>
+                    <li>Expert Datasets: Physio/golfer inputs.</li>
+                    <li>TensorFlow Lite: On-device fine-tuning.</li>
+                    <li>Validation: OpenCapBench benchmarks.</li>
+                </ul>
+                <h4>2.14.2 Connections to Other Tech</h4>
+                <p>Trains locally, syncs updates with Workers, validates with R2 datasets.</p>
+                <h4>2.14.3 Pros/Cons and Best Practices</h4>
+                <table>
+                    <tr><th>Pros</th><th>Cons</th></tr>
+                    <tr><td>Personalized models; privacy.</td><td>Complex training.</td></tr>
+                </table>
+                <p>Best Practice: Secure data aggregation, regular expert reviews.</p>
+            </div>
+            <div class="subsection">
+                <h3>2.15. User Privacy & Security</h3>
+                <h4>Introduction to the Technology</h4>
+                <p>Ensures privacy with E2E encryption, anonymization, and compliance. Stack Position: Cross-layer security.</p>
+                <h4>2.15.1 Overview and Sub-Technologies</h4>
+                <ul>
+                    <li>E2E Encryption: Secures video uploads.</li>
+                    <li>Anonymization: Masks user data.</li>
+                    <li>Opt-in Sharing: User consent.</li>
+                    <li>Audits: GDPR/HIPAA compliance.</li>
+                </ul>
+                <h4>2.15.2 Connections to Other Tech</h4>
+                <p>Protects data in React Native, Workers, D1, and R2.</p>
+                <h4>2.15.3 Pros/Cons and Best Practices</h4>
+                <table>
+                    <tr><th>Pros</th><th>Cons</th></tr>
+                    <tr><td>High privacy; legal compliance.</td><td>Processing overhead.</td></tr>
+                </table>
+                <p>Best Practice: Regular audits, clear consent UI.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.092 1.21-.138 2.43-.138 3.662v4.5a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7v-4.5z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5z" /></svg>
+                Part 3: Data Processing & Analysis Pipeline
+            </h2>
+            <div class="subsection flow-diagram">
+                <h3>3.1 Step-by-Step Execution Flow on Cloudflare</h3>
+                <ol>
+                    <li><strong>Video Processing & Preprocessing (Client-Side)</strong>: React Native captures feed, MediaPipe processes with edge AI, applies preprocessing (interpolation, filtering, normalization). Fuses LiDAR on iOS.</li>
+                    <li><strong>API Request to the Edge</strong>: Sends cleaned data to Workers, verified by Zero Trust, cached in KV.</li>
+                    <li><strong>Analysis with Grok (Cloudflare Worker)</strong>: Calls Grok with schemas, handles retries.</li>
+                    <li><strong>Storing Results (Cloudflare Worker)</strong>: Stores in D1, optional R2, renders in React Native.</li>
+                    <li><strong>Post-Processing (Optional)</strong>: Async analytics to D1.</li>
+                </ol>
+            </div>
+            <div class="subsection">
+                <h3>3.2 Advanced Analysis: Gait Cycles and Joint Angles</h3>
+                <h4>Introduction to the Technology</h4>
+                <p>Extends with tutorial methods: Calculates knee flexion (vector arccos), detects gait cycles (toe peaks). Stack Position: Backend layer.</p>
+                <h4>3.2.1 Overview</h4>
+                <p>Derives angles (knee via ankle-knee-hip), segments cycles by toe distance.</p>
+                <h4>3.2.2 Code Example: Angle and Cycle Detection</h4>
+                <div class="code-block"><pre><code>
+def get_angle(A, B, C, data):
+    p_A, p_B, p_C = data[:, 2*A:2*A+2], data[:, 2*B:2*B+2], data[:, 2*C:2*C+2]
+    return np.arccos(np.sum((p_A - p_B) * (p_C - p_B), axis=1) / (np.linalg.norm(p_A - p_B, axis=1) * np.linalg.norm(p_C - p_B, axis=1)))
+
+knee_angle = (np.pi - get_angle(27, 25, 23, res_processed)) * 180 / np.pi
+dst = get_distance(31, 32, res_processed) * np.sign(res_processed[:, 32*2] - res_processed[:, 31*2])
+maxs = peakdet(gaussian_filter1d(dst, 5), 0.5)[0]
+                </code></pre></div>
+                <h4>3.2.3 Integration</h4>
+                <p>Runs in Workers, stores in D1, visualizes in React Native.</p>
+                <h4>3.2.4 Enhancements</h4>
+                <p>Benchmarks with OpenCapBench, predicts GDI/cadence (0.75-0.79).</p>
+                <h4>3.2.5 Integration from Quantitative Mechanics Papers</h4>
+                <p>From Transformer: Dual-input. From squat VR: Hip/knee metrics. From review: Clustering.</p>
+            </div>
+            <div class="subsection">
+                <h3>3.3 Pipeline Enhancements from Tutorials/Guides</h3>
+                <p>Adds OpenPose for multi-person, uses CI for Stanford video tests, exports CSV.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                Part 4: CI/CD & Operations
+            </h2>
+            <div class="subsection">
+                <h3>4.1. CI/CD Pipeline with Cloudflare Pages and GitHub Actions</h3>
+                <h4>Introduction to the Technology</h4>
+                <p>Git-integrated pipeline triggers builds, tests, and deploys for Pages, Workers, and React Native.</p>
+                <h4>4.1.1 Pipeline Stages</h4>
+                <ul>
+                    <li>Build: Compiles React Native, bundles MediaPipe.</li>
+                    <li>Test: Unit (Jest), e2e (Playwright), OpenCapBench validation.</li>
+                    <li>Deploy: To App Stores/Pages/Workers, with rollback.</li>
+                </ul>
+                <h4>4.1.2 Example YAML for GitHub Actions</h4>
+                <div class="code-block"><pre><code>
+name: CI/CD
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npm test
+      - uses: cloudflare/wrangler-action@2.0.0
+        with: entrypoint: wrangler publish
+                </code></pre></div>
+            </div>
+            <div class="subsection">
+                <h3>4.2. Performance & Monitoring</h3>
+                <h4>Introduction to the Technology</h4>
+                <p>Uses Cloudflare Analytics, Workers observability, Azure Insights, and Argo for optimization.</p>
+                <h4>4.2.1 Monitoring Tools</h4>
+                <ul>
+                    <li>Prometheus: Exports Worker metrics.</li>
+                    <li>Grafana: KPI dashboards.</li>
+                </ul>
+                <h4>4.2.2 Alerting and Logging</h4>
+                <p>Logs to R2, alerts via Slack/MS Teams webhooks.</p>
+            </div>
+            <div class="subsection">
+                <h3>4.3. ChatOps Integration</h3>
+                <h4>Introduction to the Technology</h4>
+                <p>Uses Hubot/bots for Teams/Slack with /deploy, /status commands.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg>
+                Part 5: Testing, Quality Assurance & Compliance
+            </h2>
+            <div class="subsection">
+                <h3>5.1. Testing Strategy</h3>
+                <h4>Introduction to the Technology</h4>
+                <p>Multi-level testing with Jest (unit), MediaPipe integration, Appium (E2E). Validates with datasets and OpenCapBench. Tests LiDAR on iOS simulators.</p>
+                <h4>5.1.1 Experiment Ideas from Tutorial</h4>
+                <ul>
+                    <li>Vary Gaussian sigma (1-5).</li>
+                    <li>Plot ankle cycles.</li>
+                    <li>Compute knee flexion variance.</li>
+                    <li>Test multi-person videos.</li>
+                    <li>Integrate mobile-gaitlab NNs.</li>
+                </ul>
+                <h4>5.1.2 Integration from Quantitative Mechanics Papers</h4>
+                <p>From squat VR: Vicon comparison. From markerless: IMU/depth tests. From Transformer: GDI/cadence validation.</p>
+                <h4>5.1.3 Beta Testing</h4>
+                <p>Conduct real-user beta on iOS with 500 users, gathering feedback on LiDAR performance and usability.</p>
+            </div>
+            <div class="subsection">
+                <h3>5.2. Compliance & Ethics</h3>
+                <h4>Introduction to the Technology</h4>
+                <p>Ensures GDPR/HIPAA compliance with client-side opt-in, audit logs in R2, aligns with Restore Center ethics.</p>
+                <h4>5.2.1 User Privacy</h4>
+                <p>Uses E2E encryption, anonymizes uploads, requires opt-in sharing, conducts quarterly audits.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
+                Part 6: Scaling, Future Enhancements & Budget
+            </h2>
+            <div class="subsection">
+                <h3>6.1. Scaling Plan</h3>
+                <h4>Introduction to the Technology</h4>
+                <p>Serverless scales automatically, adds Kubernetes for 100K+ users. Initial budget: $5K/month (Cloudflare + Grok).</p>
+            </div>
+            <div class="subsection">
+                <h3>6.2. Future Features</h3>
+                <h4>Introduction to the Technology</h4>
+                <ul>
+                    <li>AR Overlays: WebXR with MediaPipe for immersive feedback.</li>
+                    <li>Android ARCore: Post-iOS depth support.</li>
+                    <li>ML Fine-Tuning: Custom Grok models with user data.</li>
+                    <li>3D Upgrade: BioPose for 3D accuracy.</li>
+                    <li>Prosthetics Support: Diffusion models for limbs.</li>
+                    <li>Benchmarking: OpenCapBench for validation.</li>
+                    <li>Hybrids: IMU/VR trackers, Transformer for RGB.</li>
+                    <li>Methods: Time geography/path descriptors for analytics.</li>
+                    <li>Offline Mode: Local MediaPipe models for no-connectivity use.</li>
+                    <li>Marketing: App store optimization, influencer campaigns.</li>
+                </ul>
+                <h4>6.2.1 Monetization Strategy</h4>
+                <p>Freemium: $0 basic (pose tracking), $4.99/month premium (feedback), $14.99/month pro (custom plans, coaching).</p>
+                <h4>6.2.2 Accessories Integration</h4>
+                <p>Syncs Apple Watch/AirPods for HR/voice via HealthKit, Google Fit for Android, enhancing real-time feedback.</p>
+                <h4>6.2.3 Enhanced Local Models</h4>
+                <p>Uses federated learning with physio (Stanford) and golfer (PGA) datasets, fine-tuned on-device.</p>
+                <h4>6.2.4 Competitor Analysis</h4>
+                <p>Analyzes Kaia Health (AI rehab), Exer (video workouts), focusing on differentiation via LiDAR/edge AI.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
